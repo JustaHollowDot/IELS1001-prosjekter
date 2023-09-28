@@ -161,20 +161,20 @@ void display_points() {
 
     delay(3000);
 }
-           
+
 void setup() {
     Serial.begin(9600);
     pixels.begin();
-               
+
     ball_pos = ENDZONE;
     speed = Direction::right;
 
     pinMode(LEFT_BUTTON, INPUT);
     pinMode(RIGHT_BUTTON, INPUT);
 }
-           
 
-               
+
+
 void loop() {
     while (left_points < WINS_NEEDED && right_points < WINS_NEEDED) {
         play_round();
