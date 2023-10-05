@@ -101,8 +101,8 @@ unsigned get_button_press() {
 }
 
 void play_round() {
-    unsigned interval_micro = 1000000;
-    unsigned initial_interval = interval_micro;
+    unsigned long interval_micro = 1000000;
+    unsigned long initial_interval = interval_micro;
     unsigned long prev_time = micros();
 
     while (true) {
