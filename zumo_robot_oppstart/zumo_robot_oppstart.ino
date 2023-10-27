@@ -31,23 +31,30 @@ Car car;
 
 void setup() {
   Serial.begin(9600);
-
-  button_a.waitForButton();
 }
 
   
 void loop() {
-  car.set_turn_degrees(90);
+  car.set_move(0, 500, true);
 
-  while (car.current_movement.action != Action::NO_ACTION) {
-    car.update();
-  }
+  while (!car.update());
 
+  delay(500);
+
+  car.set_move(0, 500, false);
+
+  while (!car.update());
+
+  delay(500);
+  
+
+  /*
   car.set_turn_degrees(-90);
 
   while (car.current_movement.action != Action::NO_ACTION) {
     car.update();
   }
+*/
 }
 
 /*
