@@ -3,28 +3,9 @@
 #include "Car.h"
   
 Zumo32U4ButtonA button_a;
+Zumo32U4Encoders encoders;
 
 /*
-class SimpleMovingAverage {
-    int dataset[10] = {0};
-    int idx;
-    double sum;
-    
-    public:
-
-    SimpleMovingAverage() = default;
-    
-    void addData(double num)
-    {
-        sum += num;
-        sum -= dataset[idx];
-
-        idx++;
-        idx %= 10;
-    }
-    
-    double getMean() const { return sum / 10; }
-};
 */
 
 Car car;
@@ -32,29 +13,29 @@ Car car;
 void setup() {
   Serial.begin(9600);
 }
-
-  
+ 
 void loop() {
-  car.set_move(0, 500, true);
+  for (int i = 0; i < 4; i++) {
+    car.set_turn_with_radius(100, 90);
 
-  while (!car.update());
-
-  delay(500);
-
-  car.set_move(0, 500, false);
-
-  while (!car.update());
-
-  delay(500);
-  
-
-  /*
-  car.set_turn_degrees(-90);
-
-  while (car.current_movement.action != Action::NO_ACTION) {
-    car.update();
+    while (!car.update()) {}
   }
-*/
+
+  for (int i = 0; i < 4; i++) {
+    car.set_turn_with_radius(100, -90);
+
+    while (!car.update()) {
+    }
+  }
+
+  delay(500);
+
+  car.set_turn_degrees(180);
+
+  while (!car.update()) {
+  }
+
+  delay(500);
 }
 
 /*

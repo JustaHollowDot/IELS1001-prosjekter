@@ -1,0 +1,31 @@
+car.h:
+    Change set_move etc to Movement class
+    Revise functions to fit better
+    Communicate with all of the sensors
+    Add queue for Movement
+
+LineSensor.h:
+    create class
+    check if ground is underneath
+
+ProximitySensor.h:
+    create class
+
+IMU.h:
+    create an interface with the dependencies; Acc, Gyro and Mag
+        calculate speed and distance based on Acc
+        get current angle and turn rate with Gyro
+        do something with Mag
+
+Positional_data.h:
+    change into IMU.h
+
+TurnSensor.h:
+    change into IMU.h
+
+Motors.h:
+    Ensure not to high direction change
+    Implement distance calculation
+
+OLed:
+    Create an interface to display stuff easily

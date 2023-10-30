@@ -3,14 +3,14 @@
 
 class TurnSensor {
     public:
-    const long turn_45 = 0x20000000;
-    const long turn_90 = 0x40000000;
-    const long turn_1 = (0x20000000 + 22) / 45;
+    const int32_t turn_45 = 0x20000000;
+    const int32_t turn_90 = 0x40000000;
+    const int32_t turn_1 = (0x20000000 + 22) / 45;
 
-    int turn_angle = 0;
-    int turn_rate;
-    int gyro_offset;
-    unsigned long last_update = 0;
+    int64_t turn_angle = 0;
+    int64_t turn_rate;
+    int64_t gyro_offset = 0;
+    uint32_t last_update = 0;
 
     TurnSensor() = default;
 

@@ -18,21 +18,22 @@ void TurnSensor::update() {
 
     turn_rate = imu.g.z - gyro_offset;
 
-    unsigned long m = micros();
-    unsigned long dt = m - last_update;
+    uint32_t m = micros();
+    uint32_t dt = m - last_update;
     last_update = m;
 
-    long int  d = turn_rate * dt;
+    int64_t d = turn_rate * dt;
 
     turn_angle += d * 14680064 / 17578125;
 }
 
 void TurnSensor::setup() {
+    Wire.begin();
     imu.init();
     imu.enableDefault();
     imu.configureForTurnSensing();
 
-    int total = 0;
+    int32_t total = 0;
     for (int i = 0; i < 1024; i++) {
         while (!imu.gyroDataReady()) {}
 
